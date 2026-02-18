@@ -1,9 +1,14 @@
 <?php
 const PUBLIC_PATH = __DIR__;
+const APP_PATH = PUBLIC_PATH.'/..';
 const VENDOR_PATH = PUBLIC_PATH.'/../vendor';
 const VIEWS_DIR = PUBLIC_PATH.'/../views';
 
 require VENDOR_PATH.'/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(APP_PATH);
+$dotenv->load();
+
 include '../db/queries.php';
 
 $title = '';
