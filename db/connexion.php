@@ -1,9 +1,14 @@
 <?php
-$host = '127.0.0.1';
-$db_name = 'school_hepl';
-$user = 'root';
+//const PUBLIC_PATH = __DIR__;
+//const APP_PATH = PUBLIC_PATH.'/..';
+//const VENDOR_PATH = PUBLIC_PATH.'/../vendor';
+//const VIEWS_DIR = PUBLIC_PATH.'/../views';
+
+$host = $_ENV['DB_HOST'];
+$db_name = $_ENV['DB_DATABASE'];
+$user = $_ENV['DB_USERNAME'];
 $pass = '';
-$charset = 'utf8mb4'; 
+$charset = $_ENV['DB_CHARSET'];
 $dsn = "mysql:host=$host;dbname=$db_name;charset=$charset";
 
 $options = [
@@ -12,9 +17,8 @@ $options = [
     PDO::ATTR_EMULATE_PREPARES => false,
 ];
 
-
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (PDOException $e) {
-    echo 'Erreur de connexion : ' . $e->getMessage();
+    echo 'Erreur de connexion : '.$e->getMessage();
 }
