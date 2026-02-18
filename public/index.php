@@ -1,6 +1,7 @@
 <?php
 
 const PUBLIC_PATH = __DIR__;
+const VENDOR_PATH = PUBLIC_PATH . '/../vendor';
 const VIEWS_DIR = PUBLIC_PATH . '/../views';
 
 include '../db/queries.php';
