@@ -1,8 +1,9 @@
 <?php
-//const PUBLIC_PATH = __DIR__;
-//const APP_PATH = PUBLIC_PATH.'/..';
-//const VENDOR_PATH = PUBLIC_PATH.'/../vendor';
-//const VIEWS_DIR = PUBLIC_PATH.'/../views';
+
+// const PUBLIC_PATH = __DIR__;
+// const APP_PATH = PUBLIC_PATH.'/..';
+// const VENDOR_PATH = PUBLIC_PATH.'/../vendor';
+// const VIEWS_DIR = PUBLIC_PATH.'/../views';
 
 $host = $_ENV['DB_HOST'];
 $db_name = $_ENV['DB_DATABASE'];

@@ -1,4 +1,5 @@
 <?php
+
 const PUBLIC_PATH = __DIR__;
 const APP_PATH = PUBLIC_PATH.'/..';
 const VENDOR_PATH = PUBLIC_PATH.'/../vendor';
