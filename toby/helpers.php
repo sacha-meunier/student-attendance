@@ -6,8 +6,11 @@ if (! function_exists('dd')) {
     #[NoReturn]
     function dd(...$vars): void
     {
-        var_dump($vars);
-        exit();
+        foreach ($vars as $var) {
+            var_dump($var);
+            echo PHP_EOL;
+        }
+        die();
     }
 }
 

@@ -1,12 +1,12 @@
-<?php include_once 'partials/head.php' ?>
+<?php include VIEWS_PATH . '/partials/head.php' ?>
 
 <?php global $title ?>
-<main class="page-main">
-    <h1><?php echo $title ?></h1>
-</main>
+    <main class="page-main">
+        <h1><?php echo $title ?></h1>
+    </main>
 
 
-<?php include_once 'partials/nav.php' ?>
+<?php include VIEWS_PATH . '/partials/nav.php' ?>
 
 
-<?php include_once 'partials/footer.php' ?>
+<?php include VIEWS_PATH . '/partials/footer.php' ?>
