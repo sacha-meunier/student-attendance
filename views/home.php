@@ -1,12 +1,8 @@
-<?php include VIEWS_PATH . '/partials/head.php' ?>
+<?php include VIEWS_PATH.'/partials/head.php' ?>
+<main class="page-main">
+    <h1><?php echo $title ?></h1>
+</main>
 
-<?php global $title ?>
-    <main class="page-main">
-        <h1><?php echo $title ?></h1>
-    </main>
+<?php include VIEWS_PATH.'/partials/nav.php' ?>
 
-
-<?php include VIEWS_PATH . '/partials/nav.php' ?>
-
-
-<?php include VIEWS_PATH . '/partials/footer.php' ?>
+<?php include VIEWS_PATH.'/partials/footer.php' ?>

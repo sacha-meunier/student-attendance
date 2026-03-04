@@ -1,5 +1,4 @@
 <?php include VIEWS_PATH.'/partials/head.php' ?>
-<?php global $title ?>
 <main class="page-main">
     <h1><?php echo $title ?></h1>
     <form action="" method="POST">

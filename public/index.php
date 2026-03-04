@@ -6,23 +6,19 @@ require VENDOR_PATH.'/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(ROOT_PATH);
 $dotenv->load();
 
-include DB_PATH.'/queries.php';
-
-$title = '';
-
 switch ($_SERVER['REQUEST_URI']) {
     case '':
     case '/':
-        $title = 'Page d’accueil';
-        include VIEWS_PATH.'/home.php';
+        require CONTROLLERS_PATH.'/HomeController.php';
+        index();
         break;
     case '/presences':
-        $title = 'Prendre les présences';
-        include VIEWS_PATH.'/attendances/index.php';
+        require CONTROLLERS_PATH.'/AttendanceController.php';
+        index();
         break;
     case '/etudiants':
-        $title = 'Tous les étudiants';
-        include VIEWS_PATH.'/students/index.php';
+        require CONTROLLERS_PATH.'/StudentController.php';
+        index();
         break;
     default:
         $title = '404';
