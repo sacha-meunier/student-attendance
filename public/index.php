@@ -22,5 +22,5 @@ switch ($_SERVER['REQUEST_URI']) {
         break;
     default:
         $title = '404';
-        include VIEWS_PATH.'/404.php';
+        include VIEWS_PATH.'/404.blade.php';
 }

@@ -47,3 +47,13 @@ if (! function_exists('db_connexion')) {
 
     }
 }
+
+if (! function_exists('view')) {
+    function view(string $name = '', array $data = []): void
+    {
+        $name = str_replace('.', '/', $name);
+        extract($data);
+        include VIEWS_PATH.'/'.$name.'.blade.php';
+
+    }
+}
