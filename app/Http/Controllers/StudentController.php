@@ -6,6 +6,17 @@ use App\Models\Student;
 
 class StudentController
 {
+    private function check_id(): ?int
+    {
+        // Validation
+        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+            die('Bad Request');
+        }
+
+        // Sanitisation | Nettoyage | Préparation
+        return (int)$_GET['id'];
+    }
+
     public function index(): void
     {
         $title = 'Tous les étudiants';
@@ -44,13 +55,7 @@ class StudentController
 
     public function show(): void
     {
-        // Validation
-        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-            die('Bad Request');
-        }
-
-        // Sanitisation | Nettoyage | Préparation
-        $id = (int)$_GET['id'];
+        $id = $this->check_id();
 
         // Récupération des données
         $student = Student::find($id);
@@ -70,5 +75,34 @@ class StudentController
         );
 
 
+    }
+
+    public function edit(): void
+    {
+        $id = $this->check_id();
+
+        // Récupération des données
+        $student = Student::find($id);
+
+        // Gestion d'un cas d'exception
+        if (!$student) {
+            die('Student not found');
+        }
+
+        $title = 'La fiche de ' . $student->first_name;
+
+        view('students.edit',
+            compact(
+                'title',
+                'student'
+            )
+        );
+    }
+
+    public function update()
+    {
+        $id = $this->check_id();
+
+        die('oui, update');
     }
 }
