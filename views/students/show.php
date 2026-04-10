@@ -35,19 +35,19 @@
             <dt>Email</dt>
             <dd><a href="mailto: <?= $student->email ?>"><?= $student->email ?></a></dd>
         </div>
-        <?php if($student->birth_date): ?>
+        <?php if ($student->birth_date) { ?>
         <div>
             <dt>Date de naissance</dt>
             <dd><time datetime="<?= $student->birth_date ?>"><?= $student->birth_date ?></time></dd>
         </div>
-        <?php endif; ?>
-        <?php if($student->profile_photo): ?>
+        <?php } ?>
+        <?php if ($student->profile_photo) { ?>
         <div>
             <dt>Photo de profil</dt>
             <dd><img src="<?= $student->profile_photo ?>"
                      alt="Portrait de <?= $student->first_name ?> <?= $student->last_name ?>"></dd>
         </div>
-        <?php endif; ?>
+        <?php } ?>
     </dl>
 
     

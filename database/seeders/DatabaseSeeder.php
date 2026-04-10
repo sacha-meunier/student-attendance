@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $students = require __DIR__ . '/data/students.php';
+        $students = require __DIR__.'/data/students.php';
         foreach ($students as $student) {
             Student::create($student);
         }

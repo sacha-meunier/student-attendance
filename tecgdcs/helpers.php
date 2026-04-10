@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Database\Capsule\Manager;
 use JetBrains\PhpStorm\NoReturn;
 
-if (!function_exists('dd')) {
+if (! function_exists('dd')) {
     #[NoReturn]
     function dd(...$vars): void
     {
@@ -10,21 +11,21 @@ if (!function_exists('dd')) {
             var_dump($var);
             echo PHP_EOL;
         }
-        die();
+        exit();
     }
 }
 
-if (!function_exists('env')) {
+if (! function_exists('env')) {
     function env(string $key, $default = null): mixed
     {
         return $_ENV[$key] ?? $default;
     }
 }
 
-if (!function_exists('db_connection')) {
+if (! function_exists('db_connection')) {
     function db_connection(): void
     {
-        $capsule = new \Illuminate\Database\Capsule\Manager();
+        $capsule = new Manager;
 
         $capsule->addConnection([
             'driver' => env('DB_CONNECTION'),
@@ -44,25 +45,25 @@ if (!function_exists('db_connection')) {
     }
 }
 
-if (!function_exists('view')) {
+if (! function_exists('view')) {
     function view(string $name, array $data = []): void
     {
         $name = str_replace('.', '/', $name);
-        $view = VIEWS_PATH . '/' . $name . '.php';
+        $view = VIEWS_PATH.'/'.$name.'.php';
         if (file_exists($view)) {
             extract($data);
             include $view;
         } else {
-            die('La vue n’existe pas');
+            exit('La vue n’existe pas');
         }
 
     }
 }
 
-if (!function_exists('csrf_token')) {
+if (! function_exists('csrf_token')) {
     function csrf_token(int $length = 32): string
     {
-        if (!isset($_SESSION['token'])) {
+        if (! isset($_SESSION['token'])) {
             $_SESSION['token'] = bin2hex(random_bytes($length));
         }
 

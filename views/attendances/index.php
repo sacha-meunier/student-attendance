@@ -3,14 +3,14 @@
     <h1><?= $title ?></h1>
     <form action="" method="POST">
         <ol class="student-list">
-            <?php foreach ($students as $student): ?>
+            <?php foreach ($students as $student) { ?>
                 <li>
                     <input id="<?= $student->id ?>" type="checkbox" name="students[]"
                            value="<?= $student->id ?>">
                     <label for="<?= $student->id ?>"><?= $student->first_name ?>
                         &nbsp;<?= $student->last_name ?></label>
                 </li>
-            <?php endforeach; ?>
+            <?php } ?>
         </ol>
 
         <button type="submit">Enregistrer les présences</button>

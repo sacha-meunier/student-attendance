@@ -5,14 +5,15 @@ namespace Tecgdcs;
 class Router
 {
     private string $url;
+
     private string $method;
+
     private array $action;
 
     public function __construct(
         private array $routes = [],
-    )
-    {
-        $this->routes = include ROOT_PATH . '/routes.php';
+    ) {
+        $this->routes = include ROOT_PATH.'/routes.php';
         $this->url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $this->method = $_REQUEST['_method'] ?? $_SERVER['REQUEST_METHOD'];
     }
@@ -25,7 +26,7 @@ class Router
                 return $route['action'];
             }
         }
-        die('route not found');
+        exit('route not found');
     }
 
     public function route()

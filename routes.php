@@ -1,13 +1,18 @@
 <?php
+
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\StudentController;
+
 return [
     // Affichage page home
     [
         'url' => '/',
         'method' => 'get',
         'action' => [
-            \App\Http\Controllers\PageController::class,
+            PageController::class,
             'home',
-        ]
+        ],
     ],
 
     // Affichage liste des présences
@@ -15,26 +20,26 @@ return [
         'url' => '/presences',
         'method' => 'get',
         'action' => [
-            \App\Http\Controllers\AttendanceController::class,
+            AttendanceController::class,
             'index',
-        ]
+        ],
     ],
 
     [
         'url' => '/etudiants',
         'method' => 'get',
         'action' => [
-            \App\Http\Controllers\StudentController::class,
+            StudentController::class,
             'index',
-        ]
+        ],
     ],
 
     [
         'url' => '/etudiants',
         'method' => 'post',
         'action' => [
-            \App\Http\Controllers\StudentController::class,
-            'store'
+            StudentController::class,
+            'store',
         ],
     ],
 
@@ -42,44 +47,44 @@ return [
         'url' => '/etudiants/create',
         'method' => 'get',
         'action' => [
-            \App\Http\Controllers\StudentController::class,
+            StudentController::class,
             'create',
-        ]
+        ],
     ],
 
     [
         'url' => '/etudiant',
         'method' => 'get',
         'action' => [
-            \App\Http\Controllers\StudentController::class,
+            StudentController::class,
             'show',
-        ]
+        ],
     ],
 
     [
         'url' => '/etudiant/edit',
         'method' => 'get',
         'action' => [
-            \App\Http\Controllers\StudentController::class,
+            StudentController::class,
             'edit',
-        ]
+        ],
     ],
 
     [
         'url' => '/etudiant',
         'method' => 'put',
         'action' => [
-            \App\Http\Controllers\StudentController::class,
+            StudentController::class,
             'update',
-        ]
+        ],
     ],
 
     [
         'url' => '/etudiant',
         'method' => 'delete',
         'action' => [
-            \App\Http\Controllers\StudentController::class,
+            StudentController::class,
             'destroy',
-        ]
+        ],
     ],
 ];

@@ -40,18 +40,18 @@
             <input type="email" id="email" name="email" value="<?= $student->email ?>"
                    placeholder="<?= $student->email ?>" required>
         </div>
-        <?php if ($student->birth_date): ?>
+        <?php if ($student->birth_date) { ?>
             <div>
                 <label for="birth_date">Date de naissance</label>
                 <input type="date" id="birth_date" name="birth_date" value="<?= $student->birth_date ?>"
                        placeholder="<?= $student->birth_date ?>">
             </div>
-        <?php endif; ?>
+        <?php } ?>
         <div>
-            <?php if ($student->profile_photo): ?>
+            <?php if ($student->profile_photo) { ?>
                 <img src="<?= $student->profile_photo ?>"
                      alt="Portrait de <?= $student->first_name ?> <?= $student->last_name ?>">
-            <?php endif ?>
+            <?php } ?>
             <label for="profile_photo">Photo de profil</label>
             <input type="file" id="profile_photo" name="profile_photo">
         </div>

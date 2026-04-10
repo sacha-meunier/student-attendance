@@ -33,7 +33,7 @@ class StudentController extends Controller
     public function store(): RedirectResponse
     {
         // Stocker un étudiant en DB
-        $student = new Student();
+        $student = new Student;
 
         $student->first_name = $_POST['first_name'];
         $student->last_name = $_POST['last_name'];
@@ -49,7 +49,7 @@ class StudentController extends Controller
 
     public function show(Student $student): View|Factory
     {
-        $title = 'La fiche de ' . $student->first_name;
+        $title = 'La fiche de '.$student->first_name;
 
         return view('students.show',
             compact(
@@ -58,12 +58,11 @@ class StudentController extends Controller
             )
         );
 
-
     }
 
     public function edit(Student $student): View|Factory
     {
-        $title = 'La fiche de ' . $student->first_name;
+        $title = 'La fiche de '.$student->first_name;
 
         return view('students.edit',
             compact(
@@ -85,7 +84,6 @@ class StudentController extends Controller
         $student->birth_date = empty($_POST['birth_date']) ? null : $_POST['birth_date'];
 
         $student->save();
-
 
         return redirect()->route('students.show', $student);
 
