@@ -3,60 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Tecgdcs\Response;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
-class StudentController
+class StudentController extends Controller
 {
-    private function check_id(): ?int
-    {
-        // Validation
-        if (!isset($_REQUEST['id']) || !is_numeric($_REQUEST['id'])) {
-            Response::abort(Response::BAD_REQUEST);
-        }
-
-        // Sanitisation | Nettoyage | Préparation
-        return (int)$_REQUEST['id'];
-    }
-
-    private function check_csrf(): void
-    {
-
-        if (!isset($_REQUEST['_token'], $_SESSION['token'])) {
-            Response::abort(Response::BAD_REQUEST);
-        }
-
-        if ($_REQUEST['_token'] !== $_SESSION['token']) {
-            Response::abort(Response::UNAUTHORIZED);
-        };
-    }
-
-    public function index(): void
+    public function index(): View|Factory
     {
         $title = 'Tous les étudiants';
         $students = Student::all();
 
-        view(
+        return view(
             'students.index',
             compact('title', 'students')
         );
     }
 
-    public function create(): void
+    public function create(): View|Factory
     {
         $title = 'Ajouter un étudiant';
 
-        view(
+        return view(
             'students.create',
             compact('title')
         );
     }
 
-    public function store(): void
+    public function store(): RedirectResponse
     {
-        $this->check_csrf();
-        // Valider les données associées à la requête
-
         // Stocker un étudiant en DB
         $student = new Student();
 
@@ -69,22 +44,14 @@ class StudentController
         $student->save();
 
         // Demander au navigateur de se rediriger vers la page de résultat souhaitée
-        Response::redirect('Location: /etudiant?id=' . $student->id);
+        return redirect()->route('students.show', $student);
     }
 
-    public function show(): void
+    public function show(Student $student): View|Factory
     {
-        $id = $this->check_id();
-
-        try {
-            $student = Student::findOrFail($id);
-        } catch (ModelNotFoundException $e) {
-            Response::abort();
-        }
-
         $title = 'La fiche de ' . $student->first_name;
 
-        view('students.show',
+        return view('students.show',
             compact(
                 'title',
                 'student'
@@ -94,19 +61,11 @@ class StudentController
 
     }
 
-    public function edit(): void
+    public function edit(Student $student): View|Factory
     {
-        $id = $this->check_id();
-
-        try {
-            $student = Student::findOrFail($id);
-        } catch (ModelNotFoundException $e) {
-            Response::abort();
-        }
-
         $title = 'La fiche de ' . $student->first_name;
 
-        view('students.edit',
+        return view('students.edit',
             compact(
                 'title',
                 'student'
@@ -114,15 +73,10 @@ class StudentController
         );
     }
 
-    public function update(): void
+    public function update(Student $student): RedirectResponse
     {
-        $this->check_csrf();
 
         // Validation des données qui bloque si les données sont invalides
-
-        $id = $this->check_id();
-
-        $student = Student::find($id);
 
         $student->first_name = $_POST['first_name'];
         $student->last_name = $_POST['last_name'];
@@ -133,18 +87,14 @@ class StudentController
         $student->save();
 
 
-        Response::redirect('Location: /etudiant?id=' . $student->id);
+        return redirect()->route('students.show', $student);
 
     }
 
-    public function destroy(): void
+    public function destroy(Student $student): RedirectResponse
     {
-        $this->check_csrf();
+        $student->delete();
 
-        $id = $this->check_id();
-
-        Student::destroy($id);
-
-        Response::redirect('Location: /etudiants');
+        return redirect()->route('students.index');
     }
 }

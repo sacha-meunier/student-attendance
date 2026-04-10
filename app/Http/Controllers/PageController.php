@@ -1,11 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-class PageController
+
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
+
+class PageController extends Controller
 {
-    public function home(): void
+    public function home(): Factory|View
     {
         $title = 'Page d’accueil';
-        view('home', compact('title'));
+        return view('home', compact('title'));
     }
 }

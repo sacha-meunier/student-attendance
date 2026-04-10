@@ -1,19 +1,20 @@
 <?php
 
-use Tecgdcs\Router;
-use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 
-session_start();
+define('LARAVEL_START', microtime(true));
 
-require __DIR__ . '/../bootstrap/app.php';
+// Determine if the application is in maintenance mode...
+if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+    require $maintenance;
+}
 
-require VENDOR_PATH . '/autoload.php';
+// Register the Composer autoloader...
+require __DIR__.'/../vendor/autoload.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(ROOT_PATH);
-$dotenv->load();
+// Bootstrap Laravel and handle the request...
+/** @var Application $app */
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
-
-db_connection();
-
-
-new Router()->route();
+$app->handleRequest(Request::capture());
