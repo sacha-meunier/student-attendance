@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ asset('build/assets/css/app.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>{{ $title }} | {{ config('app.name') }}</title>
 </head>
 <body class="layout">
@@ -16,7 +16,7 @@
     <h2 class="hidden" id="main-nav-id">navigation principale</h2>
     <ul>
         <li><a class="active"
-               href="{{ route('pages.home') }}">Accueil</a></li>
+               href="{{ route('pages.home') }}">Accueils</a></li>
         <li><a class=""
                href="{{ route('attendances.index') }}">Présences</a>
         </li>
