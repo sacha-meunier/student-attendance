@@ -1,5 +1,8 @@
 <x-layout :title="$title">
-    <h1>{{ $title }}</h1>
+    <x-header
+        :title="$title"
+        description="Remplissez le formulaire ci-dessous pour ajouter un nouvel étudiant."
+    />
 
     <form action="{{ route('students.store') }}"
           method="post"

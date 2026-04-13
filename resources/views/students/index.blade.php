@@ -1,5 +1,12 @@
 <x-layout :title="$title">
-    <h1>{{ $title }}</h1>
+    <x-header :title="$title">
+        <a href="{{ route('students.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+            Ajouter un étudiant
+        </a>
+    </x-header>
 
     @if (count($students) > 0)
         <ol>

@@ -1,5 +1,5 @@
 <x-layout :title="$title">
-    <h1>{{ $title }}</h1>
+    <x-header :title="$title"/>
 
     @if($students)
         <form action="" method="POST">

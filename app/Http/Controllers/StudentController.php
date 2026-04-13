@@ -62,7 +62,7 @@ class StudentController extends Controller
 
     public function edit(Student $student): View|Factory
     {
-        $title = 'La fiche de '.$student->first_name;
+        $title = 'Modifier la fiche de '.$student->first_name;
 
         return view('students.edit',
             compact(

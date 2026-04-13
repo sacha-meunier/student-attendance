@@ -1,3 +1,3 @@
 <x-layout :title="$title">
-    <h1>{{ $title }}</h1>
+    <x-header :title="$title"/>
 </x-layout>
