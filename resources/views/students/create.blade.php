@@ -19,8 +19,8 @@
             <x-input-field name="matricule" label="Matricule" type="text" placeholder="Ex : tecg1234" :error="$errors->has('matricule')" required/>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <x-input-field name="birth_date" label="Date de naissance" type="date" placeholder="Ex : 12/30/2000" :error="$errors->has('birth_date')" required/>
-            <x-input-field name="profile_photo" label="Photo de profil" type="file" :error="$errors->has('profile_photo')" required/>
+            <x-input-field name="birth_date" label="Date de naissance" type="date" placeholder="Ex : 12/30/2000" :error="$errors->has('birth_date')"/>
+            <x-input-field name="profile_photo" label="Photo de profil" type="file" :error="$errors->has('profile_photo')"/>
         </div>
 
         <div class="flex gap-4 pt-4">
